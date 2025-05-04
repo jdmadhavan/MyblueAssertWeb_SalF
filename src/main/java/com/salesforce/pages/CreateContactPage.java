@@ -1,0 +1,36 @@
+package com.salesforce.pages;
+
+import com.framework.selenium.api.design.Locators;
+import com.framework.testng.api.base.ProjectSpecificMethods;
+
+public class CreateContactPage extends ProjectSpecificMethods {
+
+	public CreateContactPage selectSalutation() {
+		click(locateElement(Locators.XPATH, "//div[contains(@class,'slds-combobox__form-element slds-input-has-icon')]//button"));
+		clickUsingJs(locateElement(Locators.XPATH, "//span[text()='Mr.']"));
+		return this;
+	}
+
+	public CreateContactPage enterFirstName(String fname) {
+		clearAndType(locateElement(Locators.XPATH, "//label[text()='First Name']/following::input"),fname);
+		return this;
+	}
+
+	public CreateContactPage enterLastName(String lname) {
+		clearAndType(locateElement(Locators.XPATH, "//label[text()='Last Name']/following::input"),lname);
+		return this;
+	}
+
+	public VerifyNewContact clickSave() {
+		click(locateElement(Locators.XPATH, "//button[text()='Save']"));
+		return new VerifyNewContact();
+	}
+
+	public CreateContactPage selectDate() {
+		click(locateElement(Locators.XPATH, "//tr/td[@data-value='2025-02-24']"));
+		return this;
+	}
+
+
+
+}
